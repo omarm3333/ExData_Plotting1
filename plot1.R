@@ -5,7 +5,7 @@ library(dplyr)
 # Source Data file name
 filename <- "household_power_consumption.txt"
 
-# Read filtered data: Date, Time and Global Active Power
+# Read filtered data: Only first 3 columns
 epc <- fread(
                 filename, sep = ";",
                 header = TRUE, na.strings = "?", stringsAsFactors = FALSE,
