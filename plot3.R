@@ -28,36 +28,39 @@ epc <- fread(
 png(file = "plot3.png", width = 480, height = 480)
 
 # Plot
-plot(
-     epc$DateTime, 
-     epc$Sub_metering_1, 
-     type="l",
-     xlab = "",
-     ylab = "Energy sub metering"
-) 
+with (epc, {
+        plot(
+                DateTime, 
+                Sub_metering_1, 
+                type="l",
+                xlab = "",
+                ylab = "Energy sub metering"
+        ) 
+        
+        # Add second plots
+        points(
+                DateTime, 
+                Sub_metering_2, 
+                type="l",
+                col = "red"
+        )
 
-# Add second plots
-points(
-     epc$DateTime, 
-     epc$Sub_metering_2, 
-     type="l",
-     col = "red"
-)
+        # Add third plots
+        points(
+                DateTime, 
+                Sub_metering_3, 
+                type="l",
+                col = "blue"
+        )
 
-# Add third plots
-points(
-        epc$DateTime, 
-        epc$Sub_metering_3, 
-        type="l",
-        col = "blue"
-)
+        # Add Legend
+        legend(
+                "topright", 
+                legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+                col=c("black","red","blue"), 
+                lty = 1, lwd = 2
+        )
+})
 
-# Add Legend
-legend(
-        "topright", 
-        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-        col=c("black","red","blue"), 
-        lty = 1, lwd = 2
-)
 # Close plot device
 dev.off()

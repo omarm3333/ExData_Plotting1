@@ -40,47 +40,49 @@ with(epc,
      )
 )
 
-# Plot 2.1
-plot(
-     epc$DateTime, 
-     epc$Sub_metering_1, 
-     type="l",
-     xlab = "",
-     ylab = "Energy sub metering"
-) 
-
-# Add Plot 2.2
-points(
-     epc$DateTime, 
-     epc$Sub_metering_2, 
-     type="l",
-     col = "red"
-)
-
-# Add Plot 2.3
-points(
-        epc$DateTime, 
-        epc$Sub_metering_3, 
-        type="l",
-        col = "blue"
-)
-
-# Add Legend of Plot 2
-legend(
-        "topright", 
-        legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
-        col=c("black","red","blue"), 
-        lty = 1, lwd = 1
-)
+# Plot 2
+with (epc, {
+        plot(
+                DateTime, 
+                Sub_metering_1, 
+                type="l",
+                xlab = "",
+                ylab = "Energy sub metering"
+        ) 
+        
+        # Add second plots
+        points(
+                DateTime, 
+                Sub_metering_2, 
+                type="l",
+                col = "red"
+        )
+        
+        # Add third plots
+        points(
+                DateTime, 
+                Sub_metering_3, 
+                type="l",
+                col = "blue"
+        )
+        
+        # Add Legend
+        legend(
+                "topright", 
+                legend = c("Sub_metering_1", "Sub_metering_2", "Sub_metering_3"), 
+                col=c("black","red","blue"), 
+                lty = 1, lwd = 2
+        )
+})
 
 # Plot 3
-plot(
-        epc$DateTime,
-        epc$Voltage,
+with (epc, plot(
+        DateTime,
+        Voltage,
         xlab = "datetime",
         ylab = "Voltage",
         type = "l"
-     )
+))
 
 # Plot 4
 with(epc, plot(
